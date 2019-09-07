@@ -24,7 +24,7 @@ namespace CoreEtl.Transform.FromScraper
                     var values = line.Split(',');
 
                     Meeting.Organisation = values[0];
-                    Meeting.Date = DateTime.ParseExact(values[1], 'ddd MMM d HH:mm:ss yyyy',
+                    Meeting.Date = DateTime.ParseExact(values[1], "dd/MM/yyyy",
                                            CultureInfo.InvariantCulture);
                     Meeting.Meeting = values[2];
                     Meeting.Official = values[3];
