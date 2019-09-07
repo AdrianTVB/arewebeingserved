@@ -27,22 +27,24 @@ namespace CoreEtl.Transform.FromScraper
 					{
 						continue;
 					}
-
-					Meeting.Organisation = values[ 0 ];
-					if ( !string.IsNullOrEmpty( values[ 1 ] ) )
+					int i = 0;
+					Meeting.Organisation = values[ i++ ];
+					if ( !string.IsNullOrEmpty( values[ i ] ) )
 					{
-						if ( values[ 1 ][ 1 ] == '/' )
+						if ( values[ i ][ i ] == '/' )
 						{
-							values[ 1 ] = '0' + values[ 1 ];
+							values[ i ] = '0' + values[ i ];
 						}
-						Meeting.Date = DateTime.ParseExact( values[ 1 ], "dd/MM/yyyy",
+						Meeting.Date = DateTime.ParseExact( values[ i ], "dd/MM/yyyy",
 											   CultureInfo.InvariantCulture );
 					}
-					Meeting.Meeting = values[ 2 ];
-					Meeting.Official = values[ 3 ];
-					Meeting.FirstName = values[ 4 ];
-					Meeting.Notes = values[ 5 ];
-
+					i++;
+					Meeting.Meeting = values[ i++ ];
+					Meeting.NameRaw = values[ i++ ];
+					Meeting.Official = values[ i++ ];
+					//Meeting.LastName = values[ i++ ];
+					Meeting.VideoLink = values[ i++ ];
+					Meeting.OrganisationForOfficial = values[ i++ ];
 					Meetings.Add( Meeting );
 
 				}
