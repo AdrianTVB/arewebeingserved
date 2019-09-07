@@ -9,42 +9,48 @@ using System.Threading.Tasks;
 
 namespace CoreEtl.Transform.FromScraper
 {
-    class LoadMeetingFile
-    {
-        public List<MeetingMetaData> LoadFile(string url)
-        {
-            using (var reader = new StreamReader(@"..\..\..\ncc2019.csv"))
-            {
-                List<MeetingMetaData> Meetings = new List<MeetingMetaData>();
+	class LoadMeetingFile
+	{
+		public List<MeetingMetaData> LoadFile( string url )
+		{
+			using ( var reader = new StreamReader( @"..\..\..\DataSources\ncc2019.csv" ) )
+			{
+				List<MeetingMetaData> Meetings = new List<MeetingMetaData>( );
 
-                while (!reader.EndOfStream)
-                {
-                    MeetingMetaData Meeting = new MeetingMetaData();
-                    var line = reader.ReadLine();
-                    var values = line.Split(',');
+				while ( !reader.EndOfStream )
+				{
+					MeetingMetaData Meeting = new MeetingMetaData( );
+					var line = reader.ReadLine( );
+					var values = line.Split( ',' );
 
-                    Meeting.Organisation = values[0];
-                    if (!string.IsNullOrEmpty(values[1]))
-                    {
-                        if(values[1][1] == '/')
-                        {
-                            values[1] = '0' + values[1];
-                        }
-                        Meeting.Date = DateTime.ParseExact(values[1], "dd/MM/yyyy",
-                                               CultureInfo.InvariantCulture);
-                    }
-                    Meeting.Meeting = values[2];
-                    Meeting.Official = values[3];
-                    Meeting.FirstName = values[4];
-                    Meeting.Notes = values[5];
+					if ( values[ 0 ] == "Organisation" )
+					{
+						continue;
+					}
 
-                    Meetings.Add(Meeting);
+					Meeting.Organisation = values[ 0 ];
+					if ( !string.IsNullOrEmpty( values[ 1 ] ) )
+					{
+						if ( values[ 1 ][ 1 ] == '/' )
+						{
+							values[ 1 ] = '0' + values[ 1 ];
+						}
+						Meeting.Date = DateTime.ParseExact( values[ 1 ], "dd/MM/yyyy",
+											   CultureInfo.InvariantCulture );
+					}
+					Meeting.Meeting = values[ 2 ];
+					Meeting.Official = values[ 3 ];
+					Meeting.FirstName = values[ 4 ];
+					Meeting.Notes = values[ 5 ];
 
-                }
+					Meetings.Add( Meeting );
 
+				}
+
+				Console.WriteLine( $"Loaded in {Meetings.Count} lines in file." );
 				return Meetings;
-            }
+			}
 
-        }
-    }
+		}
+	}
 }
