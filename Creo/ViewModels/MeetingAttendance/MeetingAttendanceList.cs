@@ -9,5 +9,6 @@ namespace Creo.ViewModels.MeetingAttendance
 	public class MeetingAttendanceList
 	{
 		public List<OfficialListItem> Attendees { get; set; }
+		public int MaxAttending { get; set; }
 	}
 }
