@@ -24,10 +24,18 @@ namespace CoreEtl.Transform.FromScraper
                     var values = line.Split(',');
 
                     Meeting.Organisation = values[0];
-                    Meeting.Date = DateTime.ParseExact(values[1], "dd/MM/yyyy",
-                                           CultureInfo.InvariantCulture);
+                    if (!string.IsNullOrEmpty(values[1]))
+                    {
+                        if(values[1][1] == '/')
+                        {
+                            values[1] = '0' + values[1];
+                        }
+                        Meeting.Date = DateTime.ParseExact(values[1], "dd/MM/yyyy",
+                                               CultureInfo.InvariantCulture);
+                    }
                     Meeting.Meeting = values[2];
                     Meeting.Official = values[3];
+                    Meeting.FirstName = values[4];
                     Meeting.Notes = values[5];
 
                     Meetings.Add(Meeting);

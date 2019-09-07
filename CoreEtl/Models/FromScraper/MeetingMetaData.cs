@@ -12,6 +12,8 @@ namespace CoreEtl.Models.FromScraper
 		public DateTime Date { get; set; }
 		public string Meeting { get; set; }
 		public string Official { get; set; }
+
+        public string FirstName { get; set; }
 		public string Notes { get; set; }
 	}
 }
