@@ -62,7 +62,7 @@
 				]
 			}
 
-			var coolGeoJSONattribution =
+			var geoJSONattribution =
 				'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
 					'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
 					'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>';
@@ -76,18 +76,18 @@
 			L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapboxAccessToken,
 				{
 					id: 'mapbox.light',
-					attribution: coolGeoJSONattribution
+					attribution: geoJSONattribution
 				}).addTo(map);
 
-			var coolGeoJSON = "";
 			$.ajax({
 				url:
 					'https://datafinder.stats.govt.nz/services/query/v1/vector.json?key=dec372bbf1174dfcb85d4b0d26a2d204&layer=98753&x=176.80312333985134&y=-39.82598651618925&max_results=10&radius=30000&geometry=true&with_field_names=true',
 				type: 'GET',
 				dataType: 'json'
 			}).done(function(result) {
-				console.log('result ', result.vectorQuery.layers['98753']);
-				var features = [result.vectorQuery.layers['98753'].features[1], result.vectorQuery.layers['98753'].features[3]];
+				var features = [
+					result.vectorQuery.layers['98753'].features[1], result.vectorQuery.layers['98753'].features[3]
+				];
 				result.vectorQuery.layers['98753'].features = features;
 				L.geoJson(result.vectorQuery.layers['98753'], { style: style, onEachFeature: onEachFeature }).addTo(map);
 			});
@@ -101,7 +101,15 @@
 		}
 
 		function zoomToFeature(e) {
-			$('#modalTrigger').trigger('click');
+			$.ajax({
+				url: '/Home/ListOfCouncillors',
+				type: 'GET',
+				dataType: 'html'
+			}).done(function (html) {
+				console.log('this is the htmo ', html);
+				$('#exampleModal .modal-body').html(html);
+				$('#modalTrigger').trigger('click');
+			});
 
 			map.fitBounds(e.target.getBounds());
 		}
@@ -139,42 +147,6 @@
 
 	<div id="map"></div>
 
-	<table class="table">
-		<thead>
-			<tr>
-				<th scope="col" style="width: 120px;"></th>
-				<th scope="col">Name</th>
-				<th scope="col">Attendance</th>
-				<th scope="col"></th>
-			</tr>
-		</thead>
-		<tbody>
-			@foreach ( OfficialListItem attendee in Model.Attendees )
-			{
-
-			<tr data-id="@attendee.Id">
-				<td>
-					@if ( !string.IsNullOrEmpty( attendee.ProfileImageUrl ) )
-					{
-						<img src="@attendee.ProfileImageUrl" alt="@attendee.Name" style="display: inline-block; width: 100px; height: auto; border-radius: 50%;" />
-					}
-				<td>@attendee.Name</td>
-				</td>
-				<td>
-					@attendee.Attendances
-				</td>
-				<td> <div class="progress" style="width:400px">
-						<div class="progress-bar" role="progressbar" aria-valuenow="0"
-							  @{int one = Decimal.ToInt32((Math.Round((decimal)attendee.Attendances / Model.MaxAttending, 2)  * 100)); }
-						     aria-valuemin="0" aria-valuemax="100" style="width: @(one )%">
-							@*<span class="sr-only">70% Complete</span>*@
-						</div>
-					</div> 
-				</td>
-			</tr>
-		}
-		</tbody>
-	</table>
 </div>
 
 <button type="button" id="modalTrigger" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="display: none;">
@@ -200,31 +172,3 @@
 		</div>
 	</div>
 </div>
-
-@*<div class="jumbotron">
-		 <h1>ASP.NET</h1>
-		 <p class="lead">Yo, Sean this should be a good starting template. I made it dot net framework instead of core, because framework is a bit more mature which means immediate development will hopefully be quicker and the improved light weightness of dot net core probably wouldn't become a factor with 2 days of dev time. </p>
-		 <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-	</div>
-
-	<div class="row">
-		 <div class="col-md-4">
-			  <h2>Getting started</h2>
-			  <p>
-					ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-					enables a clean separation of concerns and gives you full control over markup
-					for enjoyable, agile development.
-			  </p>
-			  <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-		 </div>
-		 <div class="col-md-4">
-			  <h2>Get more libraries</h2>
-			  <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-			  <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-		 </div>
-		 <div class="col-md-4">
-			  <h2>Web Hosting</h2>
-			  <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-			  <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-		 </div>
-	</div>*@
