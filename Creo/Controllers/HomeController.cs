@@ -29,7 +29,7 @@ namespace Creo.Controllers
 			return View( vm );
 		}
 
-		public ActionResult About( )
+		public ActionResult OverView( )
 		{
 			ViewBag.Message = "foobar.";
 
