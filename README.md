@@ -34,10 +34,10 @@
 
 | Name | Description | Url |
 | ------------- | ------------- | ------------- |
-| NCC Meeting Minutes | Minutes of all Napier City Council meetings. Of particular interest to us is the attendees list of the councillors. | |
-| HDC Meeting Minutes | Minutes of all Hastings City Council meetings. Of particular interest to us is the attendees list of the councillors. | |
-| HBRC Meeting Minutes | Minutes of all Hawkes Bay Regional Council meetings. Of particular interest to us is the attendees list of the councillors. | |
-| DHB Minutes | Minutes of all District Health Board meetings. Of particular interest to us is the attendees list of the councillors. | |
+| NCC Meeting Minutes | Minutes of all Napier City Council meetings. Of particular interest to us is the attendees list of the councillors. | http://napier.infocouncil.biz/ |
+| HDC Meeting Minutes | Minutes of all Hastings City Council meetings. Of particular interest to us is the attendees list of the councillors. | http://hastings.infocouncil.biz/ |
+| TODO: HBRC Meeting Minutes | Minutes of all Hawkes Bay Regional Council meetings. Of particular interest to us is the attendees list of the councillors. | http://hawkesbay.infocouncil.biz/ |
+| TODO: DHB Minutes | Minutes of all District Health Board meetings. Of particular interest to us is the attendees list of the councillors. | |
 | Stats NZ Local Authority Boundary Data | The bounding box of area that each local council serves.  | |
 | Stats NZ Regional Council Boundary Data | The bounding box of area that the regional council serves. | | 
 | Health Board Boundary Data | | |
