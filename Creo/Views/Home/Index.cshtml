@@ -2,66 +2,220 @@
 @model Creo.ViewModels.MeetingAttendance.MeetingAttendanceList
 
 @{
-    ViewBag.Title = "Home Page";
+	ViewBag.Title = "Home Page";
+}
+
+@section scripts {
+	<script type="text/javascript">
+		var map = null;
+		$(document).ready(function() {
+
+
+			//var map = L.map('map').setView([-39.502338, 176.887640], 14);
+			//console.log('map thing ', map);
+			//var latlngs = [[37, -109.05], [41, -109.03], [41, -102.05], [37, -102.04]];
+			//var polygon = L.polygon(latlngs, { color: 'red' }).addTo(map);
+// zoom the map to the polygon
+			//map.fitBounds(polygon.getBounds());
+
+
+			//var map = L.map('map').setView([-39.502338, 176.887640], 13);
+
+			//L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			//	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+			//}).addTo(map);
+
+			var boundaries = {
+				"type": "FeatureCollection",
+				"features": [
+					{
+						"type": "Feature",
+						"properties": {},
+						"geometry": {
+							"type": "Polygon",
+							"coordinates": [
+								[
+									[
+										176.8682098388672,
+										-39.47085395133684
+									],
+									[
+										176.8659782409668,
+										-39.52006536051841
+									],
+									[
+										176.9176483154297,
+										-39.51397377841746
+									],
+									[
+										176.92133903503418,
+										-39.47045640920398
+									],
+									[
+										176.8682098388672,
+										-39.47085395133684
+									]
+								]
+							]
+						}
+					}
+				]
+			}
+
+			var coolGeoJSONattribution =
+				'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+					'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+					'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>';
+
+			var mapboxAccessToken =
+				'pk.eyJ1IjoiZ2FiZXdhcmQiLCJhIjoiY2swOHdwNXVsMDJuMDNucXI3YXNmNzVjbSJ9.KSMZisWsyb-eZMP-r-fY3w';
+
+			map = L.map('map').setView([-39.744219, 176.430936], 7);
+
+
+			L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapboxAccessToken,
+				{
+					id: 'mapbox.light',
+					attribution: coolGeoJSONattribution
+				}).addTo(map);
+
+			var coolGeoJSON = "";
+			$.ajax({
+				url:
+					'https://datafinder.stats.govt.nz/services/query/v1/vector.json?key=dec372bbf1174dfcb85d4b0d26a2d204&layer=98753&x=176.80312333985134&y=-39.82598651618925&max_results=10&radius=30000&geometry=true&with_field_names=true',
+				type: 'GET',
+				dataType: 'json'
+			}).done(function(result) {
+				console.log('result ', result.vectorQuery.layers['98753']);
+				var features = [result.vectorQuery.layers['98753'].features[1], result.vectorQuery.layers['98753'].features[3]];
+				result.vectorQuery.layers['98753'].features = features;
+				L.geoJson(result.vectorQuery.layers['98753'], { style: style, onEachFeature: onEachFeature }).addTo(map);
+			});
+
+		});
+
+		function onEachFeature(feature, layer) {
+			layer.on({
+				click: zoomToFeature
+			});
+		}
+
+		function zoomToFeature(e) {
+			$('#modalTrigger').trigger('click');
+
+			map.fitBounds(e.target.getBounds());
+		}
+
+		function getColor(id) {
+			if (id == 129) {
+				return '#7fcdbb';
+			}
+			return '#2c7fb8';
+		}
+
+		function style(feature) {
+			return {
+				fillColor: getColor(feature.id),
+				weight: 2,
+				opacity: 1,
+				color: 'white',
+				dashArray: '3',
+				fillOpacity: 0.7
+			};
+		}
+	</script>
+
+	<style type="text/css">
+		#map {
+			height: 600px;
+			width: 900px;
+		}
+	</style>
 }
 
 <h2>Councilor Attendance</h2>
 
 <div class="container-fluid">
+
+	<div id="map"></div>
+
 	<table class="table">
 		<thead>
-		<tr>
-			<th scope="col" style="width: 120px;"></th>
-			<th scope="col">Name</th>
-			<th scope="col">Attendance</th>
-		</tr>
+			<tr>
+				<th scope="col" style="width: 120px;"></th>
+				<th scope="col">Name</th>
+				<th scope="col">Attendance</th>
+			</tr>
 		</thead>
 		<tbody>
-		@foreach (OfficialListItem attendee in Model.Attendees)
-		{
+			@foreach ( OfficialListItem attendee in Model.Attendees )
+			{
 
-			<tr data-id="@attendee.Id">
-				<td>
-					@if (!string.IsNullOrEmpty(attendee.ProfileImageUrl))
-					{
-						<img src="@attendee.ProfileImageUrl" alt="@attendee.Name" style="display: inline-block; width: 100px; height: auto; border-radius: 50%;" />
-					}
-				<td>@attendee.Name</td>
-				</td>
-				<td>
-					@attendee.Attendances
-				</td>
-			</tr>
-		}
+				<tr data-id="@attendee.Id">
+					<td>
+						@if ( !string.IsNullOrEmpty( attendee.ProfileImageUrl ) )
+						{
+							<img src="@attendee.ProfileImageUrl" alt="@attendee.Name" style="display: inline-block; width: 100px; height: auto; border-radius: 50%;" />
+						}
+					<td>@attendee.Name</td>
+					</td>
+					<td>
+						@attendee.Attendances
+					</td>
+				</tr>
+			}
 		</tbody>
 	</table>
 </div>
 
+<button type="button" id="modalTrigger" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="display: none;">
+	Launch demo modal
+</button>
 
-@*<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">Yo, Sean this should be a good starting template. I made it dot net framework instead of core, because framework is a bit more mature which means immediate development will hopefully be quicker and the improved light weightness of dot net core probably wouldn't become a factor with 2 days of dev time. </p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				...
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Save changes</button>
+			</div>
+		</div>
+	</div>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>*@
+@*<div class="jumbotron">
+		 <h1>ASP.NET</h1>
+		 <p class="lead">Yo, Sean this should be a good starting template. I made it dot net framework instead of core, because framework is a bit more mature which means immediate development will hopefully be quicker and the improved light weightness of dot net core probably wouldn't become a factor with 2 days of dev time. </p>
+		 <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+	</div>
+
+	<div class="row">
+		 <div class="col-md-4">
+			  <h2>Getting started</h2>
+			  <p>
+					ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+					enables a clean separation of concerns and gives you full control over markup
+					for enjoyable, agile development.
+			  </p>
+			  <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+		 </div>
+		 <div class="col-md-4">
+			  <h2>Get more libraries</h2>
+			  <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+			  <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+		 </div>
+		 <div class="col-md-4">
+			  <h2>Web Hosting</h2>
+			  <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+			  <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+		 </div>
+	</div>*@
