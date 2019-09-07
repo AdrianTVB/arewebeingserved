@@ -26,7 +26,6 @@ namespace CoreEtl.Transform.FromScraper
                     Meeting.Organisation = values[0];
                     Meeting.Date = DateTime.ParseExact(values[1], 'ddd MMM d HH:mm:ss yyyy',
                                            CultureInfo.InvariantCulture);
-                    //Meeting.Date = DateTime.Parse(values[1]);
                     Meeting.Meeting = values[2];
                     Meeting.Official = values[3];
                     Meeting.Notes = values[5];
