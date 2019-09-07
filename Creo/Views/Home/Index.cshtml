@@ -88,6 +88,7 @@
 				var features = [
 					result.vectorQuery.layers['98753'].features[1], result.vectorQuery.layers['98753'].features[3]
 				];
+				console.log('features ', features);
 				result.vectorQuery.layers['98753'].features = features;
 				L.geoJson(result.vectorQuery.layers['98753'], { style: style, onEachFeature: onEachFeature }).addTo(map);
 			});
@@ -106,12 +107,9 @@
 				type: 'GET',
 				dataType: 'html'
 			}).done(function (html) {
-				console.log('this is the htmo ', html);
 				$('#exampleModal .modal-body').html(html);
 				$('#modalTrigger').trigger('click');
 			});
-
-			map.fitBounds(e.target.getBounds());
 		}
 
 		function getColor(id) {
@@ -154,7 +152,7 @@
 </button>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
+	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
