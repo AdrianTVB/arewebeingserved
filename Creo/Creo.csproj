@@ -155,6 +155,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Hastings\wordcloudHastings.png" />
     <Content Include="Images\logo_simple.jpg" />
     <Content Include="Images\logo_simple.png" />
     <Content Include="Images\Napier\napier_0.png" />
@@ -195,7 +196,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\images\councillors\" />
-    <Folder Include="Images\Hastings\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

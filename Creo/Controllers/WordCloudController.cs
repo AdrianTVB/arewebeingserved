@@ -16,16 +16,17 @@ namespace Creo.Controllers
 		{
 			List<WordCloudImage> images = new List<WordCloudImage>( );
 			string path = "~/Images";
-			path += "/Napier";
-			images.Add( new WordCloudImage( path + "/napier_" + 0 + ".png" ) );
-
 			if ( organisationId == NapierCityCouncilId )
 			{
 				ViewBag.Title = "Napier City Council";
+				path += "/Napier";
+				images.Add( new WordCloudImage( path + "/napier_" + 0 + ".png" ) );
 			}
 			else
 			{
 				ViewBag.Title = "Hastings District Council";
+				path += "/Hastings";
+				images.Add( new WordCloudImage( path + "/wordcloudHastings.png" ) );
 			}
 
 			return View( images );
