@@ -87,6 +87,13 @@ namespace Creo.Controllers
 
 		public ActionResult About( )
 		{
+			ViewBag.Message = "About this project";
+
+			return View( );
+		}
+
+		public ActionResult Contact( )
+		{
 			ViewBag.Message = "Your About page.";
 
 			return View( );
