@@ -155,6 +155,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\logo_simple.jpg" />
+    <Content Include="Images\logo_simple.png" />
     <Content Include="Images\Napier\napier_0.png" />
     <Content Include="Images\profile.png" />
     <Content Include="Scripts\bootstrap.js" />
