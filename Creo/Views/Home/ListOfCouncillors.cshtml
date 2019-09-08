@@ -20,6 +20,10 @@
 					{
 						<img src="@attendee.ProfileImageUrl" alt="@attendee.Name" style="display: inline-block; width: 100px; height: auto; border-radius: 50%;" />
 					}
+					else
+					{
+						<img src="~/Images/profile.png" alt="@attendee.Name" style="display: inline-block; width: 100px; height: auto; border-radius: 50%;" />
+					}
 				<td>@attendee.Name</td>
 				</td>
 				<td>
@@ -28,8 +32,8 @@
 				<td>
 					<div class="progress" style="width:400px">
 						<div class="progress-bar" role="progressbar" aria-valuenow="0"
-							  @{int one = Decimal.ToInt32( ( Math.Round( ( decimal )attendee.Attendances / Model.MaxAttending, 2 ) * 100 ) ); }
-							  aria-valuemin="0" aria-valuemax="100" style="width: @(one )%">
+							 @{int one = Decimal.ToInt32( ( Math.Round( ( decimal )attendee.Attendances / Model.MaxAttending, 2 ) * 100 ) ); }
+							 aria-valuemin="0" aria-valuemax="100" style="width: @(one )%">
 							@*<span class="sr-only">70% Complete</span>*@
 						</div>
 					</div>
