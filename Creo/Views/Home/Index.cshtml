@@ -10,58 +10,6 @@
 		var map = null;
 		$(document).ready(function() {
 
-
-			//var map = L.map('map').setView([-39.502338, 176.887640], 14);
-			//console.log('map thing ', map);
-			//var latlngs = [[37, -109.05], [41, -109.03], [41, -102.05], [37, -102.04]];
-			//var polygon = L.polygon(latlngs, { color: 'red' }).addTo(map);
-// zoom the map to the polygon
-			//map.fitBounds(polygon.getBounds());
-
-
-			//var map = L.map('map').setView([-39.502338, 176.887640], 13);
-
-			//L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-			//	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-			//}).addTo(map);
-
-			var boundaries = {
-				"type": "FeatureCollection",
-				"features": [
-					{
-						"type": "Feature",
-						"properties": {},
-						"geometry": {
-							"type": "Polygon",
-							"coordinates": [
-								[
-									[
-										176.8682098388672,
-										-39.47085395133684
-									],
-									[
-										176.8659782409668,
-										-39.52006536051841
-									],
-									[
-										176.9176483154297,
-										-39.51397377841746
-									],
-									[
-										176.92133903503418,
-										-39.47045640920398
-									],
-									[
-										176.8682098388672,
-										-39.47085395133684
-									]
-								]
-							]
-						}
-					}
-				]
-			}
-
 			var geoJSONattribution =
 				'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
 					'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
@@ -84,7 +32,9 @@
 					'https://datafinder.stats.govt.nz/services/query/v1/vector.json?key=dec372bbf1174dfcb85d4b0d26a2d204&layer=98753&x=176.80312333985134&y=-39.82598651618925&max_results=10&radius=30000&geometry=true&with_field_names=true',
 				type: 'GET',
 				dataType: 'json'
-			}).done(function(result) {
+			}).done(function (result) {
+				result.vectorQuery.layers['98753'].features[3].id = 4;
+
 				var features = [
 					result.vectorQuery.layers['98753'].features[1], result.vectorQuery.layers['98753'].features[3]
 				];
@@ -102,18 +52,12 @@
 		}
 
 		function zoomToFeature(e) {
-			$.ajax({
-				url: '/Home/ListOfCouncillors',
-				type: 'GET',
-				dataType: 'html'
-			}).done(function (html) {
-				$('#exampleModal .modal-body').html(html);
-				$('#modalTrigger').trigger('click');
-			});
+			$('.modal-body  .btn-primary').attr('data-id', e.target.feature.id);
+			$('#modalTrigger').trigger('click');
 		}
 
 		function getColor(id) {
-			if (id == 129) {
+			if (id == 4) {
 				return '#7fcdbb';
 			}
 			return '#2c7fb8';
@@ -161,7 +105,7 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				...
+				<a class="btn btn-primary" href="/Home/ListOfCouncillors?organisationid=4">Attendance</a>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

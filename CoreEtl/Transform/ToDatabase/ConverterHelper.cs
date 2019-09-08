@@ -55,7 +55,7 @@ namespace CoreEtl.Transform.ToDatabase
 				entity = dbContext.Officials.FirstOrDefault( o => o.Name.ToLower( ) == nameRefined );
 				if ( entity == null )
 				{
-					entity = new Official( ) { Name = officialName };
+					entity = new Official( ) { Name = officialName, Organisation = organisation };
 					dbContext.Officials.Add( entity );
 				}
 				officialCache.Add( nameRefined, entity );
