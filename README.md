@@ -1,5 +1,8 @@
 # R U Being Served?
 
+[Demonstration Video](https://youtu.be/vBYSSTZGlEk)
+[Finished Webpage](https://areyouservingus.azurewebsites.net)
+
 ## Problem 
 Every few years billboards appear saying “Vote for Me” and representatives for councils and health boards are voted into office, but do they represent us?
 
