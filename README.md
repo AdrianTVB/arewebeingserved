@@ -25,9 +25,14 @@ Mapping layers from stats have been used to provide the initial landing page and
 
 ## Technology Used
 
-For prototyping the data was 
+The overview of the architecture / data flow is shown in the diagram below.
 
 ![Architecture Diagram](https://raw.githubusercontent.com/AdrianTVB/arewebeingserved/master/Team%20Planning/Architecture%20Diagram.png)
+
+Initially Python scraping of the meetings and minutes was investigated, but we reverted to manual scraping and cleaning of the data due to the lack of standardisation of the raw forms, and lack of time.  Csv files were used as an interim step, powerBI was used as a prototyping tool to check the concept.  The full stack was developed in parallel, using an Azure stack consisting of C# ETL from csv into an Azure SQL database which feeds the user interface via a C# Webapp. 
+
+For the concept static Word Clouds were generated using a free online tool and linked to the Webapp.
+A PowerBI dashboard has also been linked, and further functionality has been shown using screenshots of a prototype powerBI dashboard. 
 
 ## Data Sources
 
