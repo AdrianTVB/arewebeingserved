@@ -38,6 +38,11 @@ namespace CoreEtl.Transform.FromScraper
 						Meeting.Date = DateTime.ParseExact( values[ i ], "dd/MM/yyyy",
 											   CultureInfo.InvariantCulture );
 					}
+					else
+					{
+						continue;
+					}
+
 					i++;
 					Meeting.Meeting = values[ i++ ];
 					Meeting.NameRaw = values[ i++ ];
