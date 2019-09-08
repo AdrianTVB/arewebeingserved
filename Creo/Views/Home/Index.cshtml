@@ -1,5 +1,4 @@
-﻿@using Creo.ViewModels.Official
-@model Creo.ViewModels.MeetingAttendance.MeetingAttendanceList
+﻿@model Creo.ViewModels.MeetingAttendance.MeetingAttendanceList
 
 @{
 	ViewBag.Title = "Home Page";
@@ -33,7 +32,8 @@
 				type: 'GET',
 				dataType: 'json'
 			}).done(function(result) {
-				result.vectorQuery.layers['98753'].features[3].id = 4;
+				result.vectorQuery.layers['98753'].features[1].id = 12;
+				result.vectorQuery.layers['98753'].features[3].id = 13;
 
 				var features = [
 					result.vectorQuery.layers['98753'].features[1], result.vectorQuery.layers['98753'].features[3]
@@ -52,13 +52,14 @@
 		}
 
 		function zoomToFeature(e) {
+			$('.modal-header .modal-title').html(setTitle(e.target.feature.id));
 			$('.modal-body  .list-of-attendance').attr('href', getListOfCouncillorsUrl(e.target.feature.id));
 			$('.modal-body  .word-cloud').attr('href', getWordCloudUrl(e.target.feature.id));
 			$('#modalTrigger').trigger('click');
 		}
 
 		function getColor(id) {
-			if (id == 4) {
+			if (id == 12) {
 				return '#7fcdbb';
 			}
 			return '#2c7fb8';
@@ -73,6 +74,13 @@
 				dashArray: '3',
 				fillOpacity: 0.7
 			};
+		}
+
+		function setTitle(id) {
+			if (id == 13) {
+				return "Napier City Council";
+			}
+			return "Hastings District Council";
 		}
 
 		function getListOfCouncillorsUrl(id) {
@@ -119,7 +127,6 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Save changes</button>
 			</div>
 		</div>
 	</div>

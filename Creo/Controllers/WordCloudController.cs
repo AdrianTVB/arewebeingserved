@@ -7,7 +7,7 @@ namespace Creo.Controllers
 	public class WordCloudController : Controller
 	{
 
-		private const int NapierCityCouncilId = 4;
+		private const int NapierCityCouncilId = 13;
 
 
 		// GET: WordCloud
