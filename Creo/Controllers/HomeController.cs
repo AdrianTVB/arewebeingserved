@@ -76,16 +76,16 @@ namespace Creo.Controllers
 			return View( vm );
 		}
 
-		public ActionResult OverView( )
+		public ActionResult Report( )
 		{
 			ViewBag.Message = "foobar.";
 
 			return View( );
 		}
 
-		public ActionResult Contact( )
+		public ActionResult About( )
 		{
-			ViewBag.Message = "Your contact page.";
+			ViewBag.Message = "Your About page.";
 
 			return View( );
 		}
