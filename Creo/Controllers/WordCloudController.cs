@@ -11,6 +11,7 @@ namespace Creo.Controllers
 
 
 		// GET: WordCloud
+		[OutputCache( Duration = 86400, VaryByParam = "organisationid" )]
 		public ActionResult Index( int organisationId )
 		{
 			List<WordCloudImage> images = new List<WordCloudImage>( );

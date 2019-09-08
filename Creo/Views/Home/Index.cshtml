@@ -12,7 +12,7 @@
 			var geoJSONattribution =
 				'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
 					'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-					'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>';
+					'Imagery © <a href="https://www.mapbox.com/">Mapbox</a> Map Tiles &copy; <a href="https://datafinder.stats.govt.nz/">Stats NZ</a>';
 
 			var mapboxAccessToken =
 				'pk.eyJ1IjoiZ2FiZXdhcmQiLCJhIjoiY2swOHdwNXVsMDJuMDNucXI3YXNmNzVjbSJ9.KSMZisWsyb-eZMP-r-fY3w';
@@ -31,7 +31,7 @@
 					'https://datafinder.stats.govt.nz/services/query/v1/vector.json?key=dec372bbf1174dfcb85d4b0d26a2d204&layer=98753&x=176.80312333985134&y=-39.82598651618925&max_results=10&radius=30000&geometry=true&with_field_names=true',
 				type: 'GET',
 				dataType: 'json'
-			}).done(function (result) {
+			}).done(function(result) {
 				result.vectorQuery.layers['98753'].features[1].id = 12;
 				result.vectorQuery.layers['98753'].features[3].id = 13;
 
@@ -52,13 +52,14 @@
 		}
 
 		function zoomToFeature(e) {
+			$('.modal-header .modal-title').html(setTitle(e.target.feature.id));
 			$('.modal-body  .list-of-attendance').attr('href', getListOfCouncillorsUrl(e.target.feature.id));
 			$('.modal-body  .word-cloud').attr('href', getWordCloudUrl(e.target.feature.id));
 			$('#modalTrigger').trigger('click');
 		}
 
 		function getColor(id) {
-			if (id == 4) {
+			if (id == 12) {
 				return '#7fcdbb';
 			}
 			return '#2c7fb8';
@@ -73,6 +74,13 @@
 				dashArray: '3',
 				fillOpacity: 0.7
 			};
+		}
+
+		function setTitle(id) {
+			if (id == 13) {
+				return "Napier City Council";
+			}
+			return "Hastings District Council";
 		}
 
 		function getListOfCouncillorsUrl(id) {

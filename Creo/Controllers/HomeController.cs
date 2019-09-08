@@ -49,7 +49,7 @@ namespace Creo.Controllers
 		}
 
 
-		[OutputCache( Duration = 10, VaryByParam = "organisationid" )]
+		[OutputCache( Duration = 86400, VaryByParam = "organisationid" )]
 		public ActionResult ListOfCouncillors( int organisationid )
 		{
 			MeetingAttendanceList vm = new MeetingAttendanceList( );
@@ -72,6 +72,7 @@ namespace Creo.Controllers
 			vm.Attendees = vm.Attendees.OrderByDescending( a => a.Attendances ).ToList( );
 
 			vm.MaxAttending = vm.Attendees.Select( a => a.Attendances ).Max( );
+			vm.Title = organisationid == 13 ? "Napier City Councillors" : "Hastings District Councillors";
 
 			return View( vm );
 		}
