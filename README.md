@@ -25,7 +25,9 @@ Mapping layers from stats have been used to provide the initial landing page and
 
 ## Technology Used
 
+For prototyping the data was 
 
+![Architecture Diagram](https://raw.githubusercontent.com/AdrianTVB/arewebeingserved/master/Team%20Planning/Architecture%20Diagram.png)
 
 ## Data Sources
 
