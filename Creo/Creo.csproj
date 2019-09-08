@@ -184,6 +184,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\ListOfCouncillors.cshtml" />
     <Content Include="Views\Home\OverView.cshtml" />
+    <Content Include="Views\Home\WordClouds.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

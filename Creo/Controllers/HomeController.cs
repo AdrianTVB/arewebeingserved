@@ -13,7 +13,7 @@ namespace Creo.Controllers
 		{
 			{ "Boag", "https://napier.govt.nz/assets/Contacts/Councillor-Maxine-Boag-Oct-2016-5.jpg" },
 			{ "Brosnan", "https://napier.govt.nz/assets/Contacts/Councillor-Annette-Brosnan-Oct-2016-7.jpg" },
-			{  "Dallimore", "https://napier.govt.nz/assets/Contacts/Councillor-Larry-Dallimore-Oct-2016-8.jpg" },
+			{ "Dallimore", "https://napier.govt.nz/assets/Contacts/Councillor-Larry-Dallimore-Oct-2016-8.jpg" },
 			{ "Dalton", "https://napier.govt.nz/assets/Contacts/Mayor-Bill-Dalton-Oct-2016-3.jpg" },
 			{ "Hague", "https://napier.govt.nz/assets/Contacts/Councillor-Claire-Hague-Oct-2016-6.jpg" },
 			{ "Jeffery", "https://napier.govt.nz/assets/Contacts/Councillor-Tony-Jefferies-Mar-2017-2.jpg" },
