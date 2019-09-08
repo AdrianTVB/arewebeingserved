@@ -77,7 +77,7 @@ namespace Creo.Controllers
 			return View( vm );
 		}
 
-		public ActionResult OverView( )
+		public ActionResult Report( )
 		{
 			ViewBag.Message = "foobar.";
 
@@ -93,7 +93,7 @@ namespace Creo.Controllers
 
 		public ActionResult Contact( )
 		{
-			ViewBag.Message = "Your contact page.";
+			ViewBag.Message = "Your About page.";
 
 			return View( );
 		}
