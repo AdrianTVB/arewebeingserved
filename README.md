@@ -39,8 +39,21 @@ Attendance visualisation - how many meetings were attended by each councillor
 Word Cloud - what has been discussed in 2019
 ![Word Cloud](https://github.com/AdrianTVB/arewebeingserved/blob/master/Website%20Snapshots/napierwordcloud.png)
 
-Interactivie Dashboards
-![Interactive Dashboards]()
+Interactivie Dashboards - PowerBI Interactive dashboards of the attendance (Note:  Bug with embedded PowerBI iFrame may prevent this showing on the website.
+
+All Napier Council Meetings
+![Interactive Dashboards](https://github.com/AdrianTVB/arewebeingserved/blob/master/Website%20Snapshots/BI_Napier_AllCommittees.png)
+
+Audit and Risk Comittee Meeting Attendance
+![Interactive Dashboards](https://github.com/AdrianTVB/arewebeingserved/blob/master/Website%20Snapshots/BI_Napier_AuditAndRiskCommittee.png)
+
+Hastings District Council Wastewater Committee
+![Interactive Dashboards](https://github.com/AdrianTVB/arewebeingserved/blob/master/Website%20Snapshots/BI_Hastings_WastewaterCommittee.png)
+
+## Outcome
+
+We now have a much better way to get transparency out of those asking for our vote, and the councillors also have a great communication tool for advocating their diligence and reducing distrust.  
+The application provides insightful snapshots, allows greater public engagement and understanding, is a resource for journalists, and increases accountability of elected officials.
 
 ## Extensions - Not Implemented
 
@@ -48,6 +61,15 @@ Word Count Dashboard - what are the hot topics
 ![Word Cloud Dashboard](https://github.com/AdrianTVB/arewebeingserved/blob/master/Team%20Planning/HotTopics.png)  
 ![Word Cloud Dashboard](https://github.com/AdrianTVB/arewebeingserved/blob/master/Team%20Planning/Dashboard.png)  
 ![Word Cloud Dashboard](https://github.com/AdrianTVB/arewebeingserved/blob/master/Team%20Planning/TimeTrends.png)  
+
+## Further Improvements
+
+Next steps would ideally see us 
+- Automating parts of our backend to allow easier onboarding of additional regions and authorities.  
+- Natural language processing to allow deeper context and meaning to be derived instead purely of words used. 
+- Automated transcripting to improve resolution and reliability of source data.  
+- Partnering with interested parties to allow better collection and dissemination of information.  
+- Include social issue completion rate to allow evaluation of council effectiveness.  
 
 ## Technology Used
 
@@ -71,7 +93,6 @@ A PowerBI dashboard has also been linked, and further functionality has been sho
 | Stats NZ Local Authority Boundary Data | The bounding box of area that each local council serves.  | https://datafinder.stats.govt.nz/layer/98755-territorial-authority-2019-generalised/ |
 | Stats NZ Regional Council Boundary Data | The bounding box of area that the regional council serves. | https://datafinder.stats.govt.nz/layer/98763-regional-council-2019-generalised/ | 
 | Health Board Boundary Data | Not used in this version | |
-
 
 ## Award Categories Entered
 
