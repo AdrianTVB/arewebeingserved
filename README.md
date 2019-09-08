@@ -1,5 +1,10 @@
 # R U Being Served?
 
+[Demonstration Video](https://youtu.be/vBYSSTZGlEk)
+
+
+[Finished Webpage](https://areyouservingus.azurewebsites.net)
+
 ## Problem 
 Every few years billboards appear saying “Vote for Me” and representatives for councils and health boards are voted into office, but do they represent us?
 
@@ -59,8 +64,8 @@ A PowerBI dashboard has also been linked, and further functionality has been sho
 
 | Name | Description | Url |
 | ------------- | ------------- | ------------- |
-| NCC Meeting Minutes | Minutes of all Napier City Council meetings. Of particular interest to us is the attendees list of the councillors. | http://napier.infocouncil.biz/ |
-| HDC Meeting Minutes | Minutes of all Hastings City Council meetings. Of particular interest to us is the attendees list of the councillors. | http://hastings.infocouncil.biz/ |
+| NCC Meeting Minutes | Minutes of all Napier City Council meetings. Of particular interest to us is the attendees list of the councillors, and the contents of the full council meetings. | http://napier.infocouncil.biz/ |
+| HDC Meeting Minutes | Minutes of all Hastings City Council meetings. Of particular interest to us is the attendees list of the councillors, and the contents of the full council meetings. | http://hastings.infocouncil.biz/ |
 | TODO: HBRC Meeting Minutes | Minutes of all Hawkes Bay Regional Council meetings. Of particular interest to us is the attendees list of the councillors. | http://hawkesbay.infocouncil.biz/ |
 | TODO: DHB Minutes | Minutes of all District Health Board meetings. Of particular interest to us is the attendees list of the councillors. | |
 | Stats NZ Local Authority Boundary Data | The bounding box of area that each local council serves.  | https://datafinder.stats.govt.nz/layer/98755-territorial-authority-2019-generalised/ |
