@@ -1,7 +1,5 @@
 # R U Being Served?
 
-[Finished WebApp](https://areyouservingus.azurewebsites.net/)
-
 ## Problem 
 Every few years billboards appear saying “Vote for Me” and representatives for councils and health boards are voted into office, but do they represent us?
 
@@ -25,6 +23,23 @@ The attendance information was visualised for each organisation, and the word co
 
 Mapping layers from stats have been used to provide the initial landing page and navigation, and councillor photos are used in the attendance visualisation.
 
+## Finished Prototype
+
+Landing Page - select the authority area
+![Landing Page](https://github.com/AdrianTVB/arewebeingserved/blob/master/Website%20Snapshots/Landing%20Page(map).PNG)
+
+Attendance visualisation - how many meetings were attended by each councillor
+![Attendance Visualisation](https://github.com/AdrianTVB/arewebeingserved/blob/master/Website%20Snapshots/Official%20Attendance.PNG)
+
+Word Cloud - what has been discussed in 2019
+![Word Cloud](https://github.com/AdrianTVB/arewebeingserved/blob/master/Website%20Snapshots/WordCloud.PNG)
+
+Word Count Dashboard - what are the hot topics
+![Word Cloud Dashboard]()
+
+Interactivie Dashboards
+![Interactive Dashboards]()
+
 ## Technology Used
 
 The overview of the architecture / data flow is shown in the diagram below.
@@ -44,9 +59,9 @@ A PowerBI dashboard has also been linked, and further functionality has been sho
 | HDC Meeting Minutes | Minutes of all Hastings City Council meetings. Of particular interest to us is the attendees list of the councillors. | http://hastings.infocouncil.biz/ |
 | TODO: HBRC Meeting Minutes | Minutes of all Hawkes Bay Regional Council meetings. Of particular interest to us is the attendees list of the councillors. | http://hawkesbay.infocouncil.biz/ |
 | TODO: DHB Minutes | Minutes of all District Health Board meetings. Of particular interest to us is the attendees list of the councillors. | |
-| Stats NZ Local Authority Boundary Data | The bounding box of area that each local council serves.  | |
-| Stats NZ Regional Council Boundary Data | The bounding box of area that the regional council serves. | | 
-| Health Board Boundary Data | | |
+| Stats NZ Local Authority Boundary Data | The bounding box of area that each local council serves.  | https://datafinder.stats.govt.nz/layer/98755-territorial-authority-2019-generalised/ |
+| Stats NZ Regional Council Boundary Data | The bounding box of area that the regional council serves. | https://datafinder.stats.govt.nz/layer/98763-regional-council-2019-generalised/ | 
+| Health Board Boundary Data | Not used in this version | |
 
 
 ## Award Categories Entered
