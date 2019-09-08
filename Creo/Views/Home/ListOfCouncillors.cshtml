@@ -3,6 +3,10 @@
 
 <h2>@Model.Title</h2>
 
+<div>
+	How many council and sub-committee meetings did each councillor attend? 
+</div>
+<br/>
 <table class="table">
 	<thead>
 		<tr>
@@ -34,8 +38,8 @@
 				<td>
 					<div class="progress" style="width:400px">
 						<div class="progress-bar" role="progressbar" aria-valuenow="0"
-							 @{int one = Decimal.ToInt32( ( Math.Round( ( decimal )attendee.Attendances / Model.MaxAttending, 2 ) * 100 ) ); }
-							 aria-valuemin="0" aria-valuemax="100" style="width: @(one )%">
+							  @{int one = Decimal.ToInt32( ( Math.Round( ( decimal )attendee.Attendances / Model.MaxAttending, 2 ) * 100 ) ); }
+							  aria-valuemin="0" aria-valuemax="100" style="width: @(one )%">
 							@*<span class="sr-only">70% Complete</span>*@
 						</div>
 					</div>
