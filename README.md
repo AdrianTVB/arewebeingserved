@@ -34,13 +34,15 @@ Attendance visualisation - how many meetings were attended by each councillor
 Word Cloud - what has been discussed in 2019
 ![Word Cloud](https://github.com/AdrianTVB/arewebeingserved/blob/master/Website%20Snapshots/napierwordcloud.png)
 
+Interactivie Dashboards
+![Interactive Dashboards]()
+
+## Extensions - Not Implemented
+
 Word Count Dashboard - what are the hot topics
 ![Word Cloud Dashboard](https://github.com/AdrianTVB/arewebeingserved/blob/master/Team%20Planning/HotTopics.png)  
 ![Word Cloud Dashboard](https://github.com/AdrianTVB/arewebeingserved/blob/master/Team%20Planning/Dashboard.png)  
 ![Word Cloud Dashboard](https://github.com/AdrianTVB/arewebeingserved/blob/master/Team%20Planning/TimeTrends.png)  
-
-Interactivie Dashboards
-![Interactive Dashboards]()
 
 ## Technology Used
 
