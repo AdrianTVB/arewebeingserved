@@ -32,7 +32,7 @@ namespace Creo.Controllers
 			return View();
 		}
 
-		public PartialViewResult ListOfCouncillors( )
+		public ActionResult ListOfCouncillors( int organisationid )
 		{
 			MeetingAttendanceList vm = new MeetingAttendanceList( );
 			vm.Attendees = new List<OfficialListItem>( );
@@ -51,7 +51,7 @@ namespace Creo.Controllers
 
 			vm.MaxAttending = vm.Attendees.Select( a => a.Attendances ).Max();
 
-			return PartialView( vm );
+			return View( vm );
 		}
 
 		public ActionResult OverView( )
