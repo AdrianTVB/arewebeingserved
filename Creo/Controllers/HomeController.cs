@@ -41,6 +41,7 @@ namespace Creo.Controllers
 			{ "Redstone", "https://www.hastingsdc.govt.nz/assets/Contacts/AnnRedstone-HDCweb.jpg" },
 			{ "Travers", "https://www.hastingsdc.govt.nz/assets/Contacts/GeraldineTravers-HDCweb.jpg" },
 			{ "Watkins", "https://www.hastingsdc.govt.nz/assets/Contacts/KevinWatkins-HDCweb.jpg" },
+			{ "Schollum", "https://www.hastingsdc.govt.nz/assets/Contacts/WendySchollum-HDCweb.jpg" },
 		};
 
 		public ActionResult Index( )
