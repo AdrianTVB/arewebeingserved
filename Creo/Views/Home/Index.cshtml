@@ -1,5 +1,4 @@
-﻿@using Creo.ViewModels.Official
-@model Creo.ViewModels.MeetingAttendance.MeetingAttendanceList
+﻿@model Creo.ViewModels.MeetingAttendance.MeetingAttendanceList
 
 @{
 	ViewBag.Title = "Home Page";
@@ -32,8 +31,9 @@
 					'https://datafinder.stats.govt.nz/services/query/v1/vector.json?key=dec372bbf1174dfcb85d4b0d26a2d204&layer=98753&x=176.80312333985134&y=-39.82598651618925&max_results=10&radius=30000&geometry=true&with_field_names=true',
 				type: 'GET',
 				dataType: 'json'
-			}).done(function(result) {
-				result.vectorQuery.layers['98753'].features[3].id = 4;
+			}).done(function (result) {
+				result.vectorQuery.layers['98753'].features[1].id = 12;
+				result.vectorQuery.layers['98753'].features[3].id = 13;
 
 				var features = [
 					result.vectorQuery.layers['98753'].features[1], result.vectorQuery.layers['98753'].features[3]
@@ -119,7 +119,6 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Save changes</button>
 			</div>
 		</div>
 	</div>
