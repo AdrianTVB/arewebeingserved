@@ -13,7 +13,7 @@ namespace CoreEtl.Transform.FromScraper
 	{
 		public List<MeetingMetaData> LoadFile( string url )
 		{
-			using ( var reader = new StreamReader( @"..\..\..\DataSources\ncc2019.csv" ) )
+			using ( var reader = new StreamReader( url ) )
 			{
 				List<MeetingMetaData> Meetings = new List<MeetingMetaData>( );
 
