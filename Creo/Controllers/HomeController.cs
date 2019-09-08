@@ -48,6 +48,8 @@ namespace Creo.Controllers
 			return View( );
 		}
 
+
+		[OutputCache( Duration = 10, VaryByParam = "organisationid" )]
 		public ActionResult ListOfCouncillors( int organisationid )
 		{
 			MeetingAttendanceList vm = new MeetingAttendanceList( );
